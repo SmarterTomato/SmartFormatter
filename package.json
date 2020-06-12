@@ -1,8 +1,8 @@
 {
 	"name": "smart-formatter",
-	"displayName": "Smart Formatter",
+	"displayName": "SmartFormatter",
 	"description": "A VS Code extension formats string in anyway you like.",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
@@ -25,36 +25,54 @@
 	},
 	"license": "MIT",
 	"activationEvents": [
-		"onCommand:smartFormatter.escapeSelection",
-		"onCommand:smartFormatter.unescapeSelection"
+		"onCommand:smartFormatter.formatToString",
+		"onCommand:smartFormatter.formatFromString",
+		"onCommand:smartFormatter.escape",
+		"onCommand:smartFormatter.unescape"
 	],
 	"icon": "resources/images/icon.png",
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [{
-				"command": "smartFormatter.escapeSelection",
-				"title": "Escape Selection",
-				"category": "Smart Formatter"
-			},
-			{
-				"command": "smartFormatter.unescapeSelection",
-				"title": "Unescape Selection",
-				"category": "Smart Formatter"
-			},
-			{
 				"command": "smartFormatter.formatToString",
 				"title": "Format to String",
-				"category": "Smart Formatter",
-				"icon": {
-					"light": "resources/images/icon.png",
-					"dark": "resources/images/icon.png"
-				}
+				"category": "Smart Formatter"
+			},
+			{
+				"command": "smartFormatter.formatFromString",
+				"title": "Format from String",
+				"category": "Smart Formatter"
+			},
+			{
+				"command": "smartFormatter.escape",
+				"title": "Escape",
+				"category": "Smart Formatter"
+			},
+			{
+				"command": "smartFormatter.unescape",
+				"title": "Unescape",
+				"category": "Smart Formatter"
 			}
+
 		],
 		"menus": {
-			"explorer/context": [{
-				"command": "smartFormatter.formatToString"
-			}]
+			"editor/context": [{
+					"command": "smartFormatter.formatToString",
+					"group": "1_smartFormatter@0"
+				},
+				{
+					"command": "smartFormatter.formatFromString",
+					"group": "1_smartFormatter@1"
+				},
+				{
+					"command": "smartFormatter.escape",
+					"group": "1_smartFormatter@2"
+				},
+				{
+					"command": "smartFormatter.unescape",
+					"group": "1_smartFormatter@3"
+				}
+			]
 		}
 	},
 	"scripts": {
