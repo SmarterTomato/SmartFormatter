@@ -1,7 +1,7 @@
 {
 	"name": "smart-formatter",
 	"displayName": "SmartFormatter",
-	"description": "A VS Code extension formats string in anyway you like.",
+	"description": "A VS Code extension formats string in anyway you like. Similar functions to FreeFormatter.com",
 	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.46.0"
@@ -25,8 +25,15 @@
 	},
 	"license": "MIT",
 	"activationEvents": [
-		"onCommand:smartFormatter.formatToString",
-		"onCommand:smartFormatter.formatFromString",
+		"onCommand:smartFormatter.toString",
+		"onCommand:smartFormatter.fromString",
+		"onCommand:smartFormatter.toUpper",
+		"onCommand:smartFormatter.toLower",
+		"onCommand:smartFormatter.capitalize",
+		"onCommand:smartFormatter.capitalizeAll",
+		"onCommand:smartFormatter.toVariableUnderscore",
+		"onCommand:smartFormatter.toVariableCapitalize",
+		"onCommand:smartFormatter.toSingleLine",
 		"onCommand:smartFormatter.escape",
 		"onCommand:smartFormatter.unescape"
 	],
@@ -34,46 +41,84 @@
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [{
-				"command": "smartFormatter.formatToString",
-				"title": "Format to String",
-				"category": "Smart Formatter"
+				"command": "smartFormatter.toString",
+				"title": "Format to String (Escape \"Quote\" and \"Backslash\")",
+				"category": "SmartFormatter"
 			},
 			{
-				"command": "smartFormatter.formatFromString",
-				"title": "Format from String",
-				"category": "Smart Formatter"
+				"command": "smartFormatter.fromString",
+				"title": "Format from String (Unescape \"Quote\" and \"Backslash\")",
+				"category": "SmartFormatter"
+			},
+			{
+				"command": "smartFormatter.toUpper",
+				"title": "To Upper Case",
+				"category": "SmartFormatter"
+			},
+			{
+				"command": "smartFormatter.toLower",
+				"title": "To Lower Case",
+				"category": "SmartFormatter"
+			},
+			{
+				"command": "smartFormatter.capitalize",
+				"title": "Capitalize Each Sentence",
+				"category": "SmartFormatter"
+			},
+			{
+				"command": "smartFormatter.capitalizeAll",
+				"title": "Capitalize Each Word",
+				"category": "SmartFormatter"
+			},
+			{
+				"command": "smartFormatter.toVariableUnderscore",
+				"title": "Format to Variable (Underscore)",
+				"category": "SmartFormatter"
+			},
+			{
+				"command": "smartFormatter.toVariableCapitalize",
+				"title": "Format to Variable (Capitalize)",
+				"category": "SmartFormatter"
+			},
+			{
+				"command": "smartFormatter.toSingleLine",
+				"title": "To Single Line",
+				"category": "SmartFormatter"
 			},
 			{
 				"command": "smartFormatter.escape",
 				"title": "Escape",
-				"category": "Smart Formatter"
+				"category": "SmartFormatter"
 			},
 			{
 				"command": "smartFormatter.unescape",
 				"title": "Unescape",
-				"category": "Smart Formatter"
+				"category": "SmartFormatter"
 			}
-
 		],
 		"menus": {
 			"editor/context": [{
-					"command": "smartFormatter.formatToString",
-					"group": "1_smartFormatter@0"
+					"command": "smartFormatter.toString",
+					"group": "1_smartFormatter@0",
+					"when": "config.smartFormatter.editorContextMenu"
 				},
 				{
-					"command": "smartFormatter.formatFromString",
-					"group": "1_smartFormatter@1"
-				},
-				{
-					"command": "smartFormatter.escape",
-					"group": "1_smartFormatter@2"
-				},
-				{
-					"command": "smartFormatter.unescape",
-					"group": "1_smartFormatter@3"
+					"command": "smartFormatter.fromString",
+					"group": "1_smartFormatter@1",
+					"when": "config.smartFormatter.editorContextMenu"
 				}
 			]
-		}
+		},
+		"configuration": [{
+			"title": "SmartFormatter",
+			"properties": {
+				"smartFormatter.editorContextMenu": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show menu items in editor context menu"
+				}
+			}
+		}]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

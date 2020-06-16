@@ -16,42 +16,139 @@ export function activate(context: vscode.ExtensionContext) {
   // The commandId parameter must match the command field in package.json
 
   // * Format to string, escape only `\` and `"`
-  const formatToStringDisposable = vscode.commands.registerCommand(
-    "smartFormatter.formatToString",
+  const toStringDisposable = vscode.commands.registerCommand(
+    "smartFormatter.toString",
     () => {
       console.log(`Format to string started`);
 
       try {
         formatterService.formatToString();
-      } catch (msg) {
-        if (msg instanceof InformationMessage) {
-          vscode.window.showInformationMessage(msg.message);
-        } else if (msg instanceof Error) {
-          vscode.window.showErrorMessage(msg.message);
-        }
+      } catch (catchable) {
+        processCatchable(catchable);
       }
     }
   );
-  context.subscriptions.push(formatToStringDisposable);
+  context.subscriptions.push(toStringDisposable);
 
   // * Format from string, remove escape for `\` and `"`
-  const formatFromStringDisposable = vscode.commands.registerCommand(
-    "smartFormatter.formatFromString",
+  const fromStringDisposable = vscode.commands.registerCommand(
+    "smartFormatter.fromString",
     () => {
       console.log(`Format from string started`);
 
       try {
         formatterService.formatFromString();
-      } catch (msg) {
-        if (msg instanceof InformationMessage) {
-          vscode.window.showInformationMessage(msg.message);
-        } else if (msg instanceof Error) {
-          vscode.window.showErrorMessage(msg.message);
-        }
+      } catch (catchable) {
+        processCatchable(catchable);
       }
     }
   );
-  context.subscriptions.push(formatFromStringDisposable);
+  context.subscriptions.push(fromStringDisposable);
+
+  // * Format string to upper case
+  const toUpperDisposable = vscode.commands.registerCommand(
+    "smartFormatter.toUpper",
+    () => {
+      console.log(`To upper started`);
+
+      try {
+        formatterService.toUpper();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(toUpperDisposable);
+
+  // * Format string to lower case
+  const toLowerDisposable = vscode.commands.registerCommand(
+    "smartFormatter.toLower",
+    () => {
+      console.log(`To lower started`);
+
+      try {
+        formatterService.toLower();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(toLowerDisposable);
+
+  // * Capitalize first character of each sentence
+  const capitalizeDisposable = vscode.commands.registerCommand(
+    "smartFormatter.capitalize",
+    () => {
+      console.log(`Capitalize started`);
+
+      try {
+        formatterService.capitalize();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(capitalizeDisposable);
+
+  // * Capitalize all first character for each word
+  const capitalizeAllDisposable = vscode.commands.registerCommand(
+    "smartFormatter.capitalizeAll",
+    () => {
+      console.log(`Capitalize all started`);
+
+      try {
+        formatterService.capitalizeAll();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(capitalizeAllDisposable);
+
+  // * Format string to variable, connect word with underscore
+  const toVariableUnderscore = vscode.commands.registerCommand(
+    "smartFormatter.toVariableUnderscore",
+    () => {
+      console.log(`To variable underscore started`);
+
+      try {
+        formatterService.toVariableUnderscore();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(toVariableUnderscore);
+
+  // * Format string to variable, capitalize each word
+  const toVariableCapitalizeDisposable = vscode.commands.registerCommand(
+    "smartFormatter.toVariableCapitalize",
+    () => {
+      console.log(`To variable underscore started`);
+
+      try {
+        formatterService.toVariableCapitalize();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(toVariableCapitalizeDisposable);
+
+  // * Format string into single line
+  const toSingleLineDisposable = vscode.commands.registerCommand(
+    "smartFormatter.toSingleLine",
+    () => {
+      console.log(`To variable underscore started`);
+
+      try {
+        formatterService.toSingleLine();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(toSingleLineDisposable);
 
   // * Escape all character by programming language
   const escapeDisposable = vscode.commands.registerCommand(
@@ -60,12 +157,8 @@ export function activate(context: vscode.ExtensionContext) {
       console.log(`Escape started`);
 
       try {
-      } catch (msg) {
-        if (msg instanceof InformationMessage) {
-          vscode.window.showInformationMessage(msg.message);
-        } else if (msg instanceof Error) {
-          vscode.window.showErrorMessage(msg.message);
-        }
+      } catch (catchable) {
+        processCatchable(catchable);
       }
     }
   );
@@ -78,16 +171,20 @@ export function activate(context: vscode.ExtensionContext) {
       console.log(`Unescape started`);
 
       try {
-      } catch (msg) {
-        if (msg instanceof InformationMessage) {
-          vscode.window.showInformationMessage(msg.message);
-        } else if (msg instanceof Error) {
-          vscode.window.showErrorMessage(msg.message);
-        }
+      } catch (catchable) {
+        processCatchable(catchable);
       }
     }
   );
   context.subscriptions.push(unescapeDisposable);
+}
+
+function processCatchable(catchable: any) {
+  if (catchable instanceof InformationMessage) {
+    vscode.window.showInformationMessage(catchable.message);
+  } else if (catchable instanceof Error) {
+    vscode.window.showErrorMessage(catchable.message);
+  }
 }
 
 // this method is called when your extension is deactivated
