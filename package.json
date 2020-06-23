@@ -1,7 +1,7 @@
 {
 	"name": "smart-formatter",
 	"displayName": "SmartFormatter",
-	"description": "A VS Code extension formats string in anyway you like.",
+	"description": "A VS Code extension formats string in anyway you like. Similar functions to FreeFormatter.com",
 	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.46.0"
@@ -25,55 +25,151 @@
 	},
 	"license": "MIT",
 	"activationEvents": [
-		"onCommand:smartFormatter.formatToString",
-		"onCommand:smartFormatter.formatFromString",
-		"onCommand:smartFormatter.escape",
-		"onCommand:smartFormatter.unescape"
+		"onCommand:stringFormatter.toUpperCase",
+		"onCommand:stringFormatter.toLowerCase",
+		"onCommand:stringFormatter.toSentenceCase",
+		"onCommand:stringFormatter.toTitleCase",
+		"onCommand:stringFormatter.toSingleLine",
+		"onCommand:variableFormatter.toUnderscoreVariable",
+		"onCommand:variableFormatter.toPascalCase",
+		"onCommand:variableFormatter.toCamelCase",
+		"onCommand:variableFormatter.toCustomVariable",
+		"onCommand:escapeFormatter.escape",
+		"onCommand:escapeFormatter.unescape",
+		"onCommand:escapeFormatter.escapeWithLanguage",
+		"onCommand:escapeFormatter.unescapeWithLanguage",
+		"onCommand:escapeFormatter.escapeStringValue",
+		"onCommand:escapeFormatter.unescapeStringValue"
 	],
 	"icon": "resources/images/icon.png",
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [{
-				"command": "smartFormatter.formatToString",
-				"title": "Format to String",
-				"category": "Smart Formatter"
+				"command": "stringFormatter.toUpperCase",
+				"title": "To \"UPPER CASE\"",
+				"category": "SmartFormatter.StringFormatter",
+				"enablement": "config.stringFormatter.enable"
 			},
 			{
-				"command": "smartFormatter.formatFromString",
-				"title": "Format from String",
-				"category": "Smart Formatter"
+				"command": "stringFormatter.toLowerCase",
+				"title": "To \"lower case\"",
+				"category": "SmartFormatter.StringFormatter",
+				"enablement": "config.stringFormatter.enable"
 			},
 			{
-				"command": "smartFormatter.escape",
+				"command": "stringFormatter.toSentenceCase",
+				"title": "To \"Sentence case\"",
+				"category": "SmartFormatter.StringFormatter",
+				"enablement": "config.stringFormatter.enable"
+			},
+			{
+				"command": "stringFormatter.toTitleCase",
+				"title": "To \"Title Case\"",
+				"category": "SmartFormatter.StringFormatter",
+				"enablement": "config.stringFormatter.enable"
+			},
+			{
+				"command": "stringFormatter.toSingleLine",
+				"title": "To Single Line",
+				"category": "SmartFormatter.StringFormatter",
+				"enablement": "config.stringFormatter.enable"
+			},
+			{
+				"command": "variableFormatter.toUnderscoreVariable",
+				"title": "To \"Underscore_Variable\"",
+				"category": "SmartFormatter.VariableFormatter",
+				"enablement": "config.variableFormatter.enable"
+			},
+			{
+				"command": "variableFormatter.toPascalCase",
+				"title": "To \"PascalCase\"",
+				"category": "SmartFormatter.VariableFormatter",
+				"enablement": "config.variableFormatter.enable"
+			},
+			{
+				"command": "variableFormatter.toCamelCase",
+				"title": "To \"camelCase\"",
+				"category": "SmartFormatter.VariableFormatter",
+				"enablement": "config.variableFormatter.enable"
+			},
+			{
+				"command": "variableFormatter.toCustomVariable",
+				"title": "To Custom Variable",
+				"category": "SmartFormatter.VariableFormatter",
+				"enablement": "config.variableFormatter.enable"
+			},
+			{
+				"command": "escapeFormatter.escape",
 				"title": "Escape",
-				"category": "Smart Formatter"
+				"category": "SmartFormatter.EscapeFormatter",
+				"enablement": "config.escapeFormatter.enable"
 			},
 			{
-				"command": "smartFormatter.unescape",
+				"command": "escapeFormatter.unescape",
 				"title": "Unescape",
-				"category": "Smart Formatter"
+				"category": "SmartFormatter.EscapeFormatter",
+				"enablement": "config.escapeFormatter.enable"
+			},
+			{
+				"command": "escapeFormatter.escapeWithLanguage",
+				"title": "Escape With Language",
+				"category": "SmartFormatter.EscapeFormatter",
+				"enablement": "config.escapeFormatter.enable"
+			},
+			{
+				"command": "escapeFormatter.unescapeWithLanguage",
+				"title": "Unescape With Language",
+				"category": "SmartFormatter.EscapeFormatter",
+				"enablement": "config.escapeFormatter.enable"
+			},
+			{
+				"command": "escapeFormatter.escapeStringValue",
+				"title": "Escape string to value (Escape \"Quote\" and \"Backslash\")",
+				"category": "SmartFormatter.EscapeFormatter",
+				"enablement": "config.escapeFormatter.enable"
+			},
+			{
+				"command": "escapeFormatter.unescapeStringValue",
+				"title": "Unescape string from value (Unescape \"Quote\" and \"Backslash\")",
+				"category": "SmartFormatter.EscapeFormatter",
+				"enablement": "config.escapeFormatter.enable"
 			}
-
 		],
-		"menus": {
-			"editor/context": [{
-					"command": "smartFormatter.formatToString",
-					"group": "1_smartFormatter@0"
+		"configuration": [{
+			"title": "Smart Formatter",
+			"properties": {
+				"smartFormatter.stringFormatter.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/disable string formatter commands."
 				},
-				{
-					"command": "smartFormatter.formatFromString",
-					"group": "1_smartFormatter@1"
+				"smartFormatter.variableFormatter.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/disable variable formatter commands."
 				},
-				{
-					"command": "smartFormatter.escape",
-					"group": "1_smartFormatter@2"
+				"smartFormatter.escapeFormatter.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/disable escape formatter commands."
 				},
-				{
-					"command": "smartFormatter.unescape",
-					"group": "1_smartFormatter@3"
+				"smartFormatter.stringFormatter.toSingleLine.joinString": {
+					"type": "string",
+					"default": " ",
+					"description": "The string to replace each line break"
+				},
+				"smartFormatter.variableFormatter.toVariableCustom.capitalizeWords": {
+					"type": "boolean",
+					"default": false,
+					"description": "If formatted variable should be capitalized in custom mode"
+				},
+				"smartFormatter.variableFormatter.toVariableCustom.joinString": {
+					"type": "string",
+					"default": null,
+					"description": "String added in between words in the variable. \nIf this is not set, will have a popup window ask for it"
 				}
-			]
-		}
+			}
+		}]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

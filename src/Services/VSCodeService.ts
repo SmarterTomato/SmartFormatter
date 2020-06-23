@@ -1,33 +1,9 @@
 import * as vscode from "vscode";
-import LanguageId from "../Models/LanguageId";
 import InformationMessage from "../Models/InformationMessage";
+import { resolve } from "path";
 
-class FormatterService {
-  formatToString() {
-    const selectedText = this.getSelectedText();
-
-    const backSlashRegex = /\\/gm;
-    const quoteRegex = /"/gm;
-
-    let output = selectedText.replace(backSlashRegex, "\\\\");
-    output = output.replace(quoteRegex, `\\"`);
-
-    this.replaceSelectedText(output);
-  }
-
-  formatFromString() {
-    const selectedText = this.getSelectedText();
-
-    const backSlashRegex = /\\\\/gm;
-    const quoteRegex = /\\"/gm;
-
-    let output = selectedText.replace(backSlashRegex, "\\");
-    output = output.replace(quoteRegex, `\"`);
-
-    this.replaceSelectedText(output);
-  }
-
-  private getSelectedText(): string {
+export class VSCodeService {
+  getSelectedText(): string {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       throw new InformationMessage("No active editor");
@@ -43,7 +19,7 @@ class FormatterService {
     return selectedText;
   }
 
-  private getLanguageId(): string {
+  getLanguageId(): string {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       throw new InformationMessage("No active editor");
@@ -59,7 +35,7 @@ class FormatterService {
     return languageId;
   }
 
-  private replaceSelectedText(text: string) {
+  replaceSelectedText(text: string) {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       throw new InformationMessage("No active editor");
@@ -68,7 +44,21 @@ class FormatterService {
     const selection = editor.selection;
     editor.edit((editBuilder) => editBuilder.replace(selection, text));
   }
+
+  showInputBox(placeHolder: string): Thenable<string | undefined> {
+    return vscode.window.showInputBox({ placeHolder: placeHolder });
+  }
+
+  showQuickPick(
+    options: string[],
+    placeHolder: string
+  ): Thenable<string | undefined> {
+    return vscode.window.showQuickPick(options, {
+      placeHolder,
+      canPickMany: false,
+    });
+  }
 }
 
-const formatterService = new FormatterService();
-export default formatterService;
+const vsCodeService = new VSCodeService();
+export default vsCodeService;

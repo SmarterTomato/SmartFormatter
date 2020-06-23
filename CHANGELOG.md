@@ -1,9 +1,31 @@
 # Change Log
 
-All notable changes to the "smart-formatter" extension will be documented in this file.
+## 1.0.0 - 2020-06-23
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+Initial release of SmartFormatter
 
-## [Unreleased]
+### New
 
-- Initial release
+#### String formatter
+
+- To upper case
+- To lower case
+- To sentence case
+- To title case
+- To single line
+
+#### Variable formatter
+
+- To underscore variable
+- To pascal case
+- To camel case
+- To custom variable
+
+#### Escape formatter
+
+- Escape with current document language
+- Unescape with current document language
+- Escape with selected document language
+- Unescape with selected document language
+
+[1.0.0]: https://github.com/SmarterTomato/SmartFormatter/blob/v1.0.0/CHANGELOG.md
