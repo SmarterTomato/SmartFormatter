@@ -27,13 +27,13 @@
 	"activationEvents": [
 		"onCommand:stringFormatter.toUpperCase",
 		"onCommand:stringFormatter.toLowerCase",
-		"onCommand:stringFormatter.toSentenceCase",
 		"onCommand:stringFormatter.toTitleCase",
 		"onCommand:stringFormatter.mergeLines",
 		"onCommand:variableFormatter.toSnakeCase",
 		"onCommand:variableFormatter.toConstantCase",
 		"onCommand:variableFormatter.toPascalCase",
 		"onCommand:variableFormatter.toCamelCase",
+		"onCommand:variableFormatter.toSentence",
 		"onCommand:variableFormatter.toCustomVariable",
 		"onCommand:escapeFormatter.escape",
 		"onCommand:escapeFormatter.unescape",
@@ -54,12 +54,6 @@
 			{
 				"command": "stringFormatter.toLowerCase",
 				"title": "To \"lower case\"",
-				"category": "SmartFormatter.StringFormatter",
-				"enablement": "config.stringFormatter.enable"
-			},
-			{
-				"command": "stringFormatter.toSentenceCase",
-				"title": "To \"Sentence case\"",
 				"category": "SmartFormatter.StringFormatter",
 				"enablement": "config.stringFormatter.enable"
 			},
@@ -97,6 +91,12 @@
 				"command": "variableFormatter.toCamelCase",
 				"title": "To \"camelCase\"",
 				"category": "SmartFormatter.VariableFormatter",
+				"enablement": "config.variableFormatter.enable"
+			},
+			{
+				"command": "variableFormatter.toSentence",
+				"title": "To sentence",
+				"category": "SmartFormatter.variableFormatter",
 				"enablement": "config.variableFormatter.enable"
 			},
 			{
@@ -165,7 +165,7 @@
 					"default": " ",
 					"description": "The string to replace each line break"
 				},
-				"smartFormatter.variableFormatter.toCustomVariable.isFirstCharUpper": {
+				"smartFormatter.variableFormatter.toCustomVariable.upperFirst": {
 					"type": "boolean",
 					"default": false,
 					"description": "If formatted variable should be capitalized in custom mode"
