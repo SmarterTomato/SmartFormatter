@@ -2,7 +2,7 @@
 	"name": "smart-formatter",
 	"displayName": "SmartFormatter",
 	"description": "A VS Code extension formats string in anyway you like. Similar functions to FreeFormatter.com",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
@@ -29,8 +29,9 @@
 		"onCommand:stringFormatter.toLowerCase",
 		"onCommand:stringFormatter.toSentenceCase",
 		"onCommand:stringFormatter.toTitleCase",
-		"onCommand:stringFormatter.toSingleLine",
-		"onCommand:variableFormatter.toUnderscoreVariable",
+		"onCommand:stringFormatter.mergeLines",
+		"onCommand:variableFormatter.toSnakeCase",
+		"onCommand:variableFormatter.toConstantCase",
 		"onCommand:variableFormatter.toPascalCase",
 		"onCommand:variableFormatter.toCamelCase",
 		"onCommand:variableFormatter.toCustomVariable",
@@ -69,14 +70,20 @@
 				"enablement": "config.stringFormatter.enable"
 			},
 			{
-				"command": "stringFormatter.toSingleLine",
-				"title": "To Single Line",
+				"command": "stringFormatter.mergeLines",
+				"title": "Merge Lines",
 				"category": "SmartFormatter.StringFormatter",
 				"enablement": "config.stringFormatter.enable"
 			},
 			{
-				"command": "variableFormatter.toUnderscoreVariable",
-				"title": "To \"Underscore_Variable\"",
+				"command": "variableFormatter.toSnakeCase",
+				"title": "To \"snake_case\"",
+				"category": "SmartFormatter.VariableFormatter",
+				"enablement": "config.variableFormatter.enable"
+			},
+			{
+				"command": "variableFormatter.toConstantCase",
+				"title": "To \"CONSTANT_CASE\"",
 				"category": "SmartFormatter.VariableFormatter",
 				"enablement": "config.variableFormatter.enable"
 			},
@@ -153,17 +160,17 @@
 					"default": true,
 					"description": "Enable/disable escape formatter commands."
 				},
-				"smartFormatter.stringFormatter.toSingleLine.joinString": {
+				"smartFormatter.stringFormatter.mergeLines.joinString": {
 					"type": "string",
 					"default": " ",
 					"description": "The string to replace each line break"
 				},
-				"smartFormatter.variableFormatter.toVariableCustom.capitalizeWords": {
+				"smartFormatter.variableFormatter.toCustomVariable.isFirstCharUpper": {
 					"type": "boolean",
 					"default": false,
 					"description": "If formatted variable should be capitalized in custom mode"
 				},
-				"smartFormatter.variableFormatter.toVariableCustom.joinString": {
+				"smartFormatter.variableFormatter.toCustomVariable.joinString": {
 					"type": "string",
 					"default": null,
 					"description": "String added in between words in the variable. \nIf this is not set, will have a popup window ask for it"

@@ -2,7 +2,7 @@ import vsCodeService from "./VSCodeService";
 import InformationMessage from "../Models/InformationMessage";
 import stringUtils from "../Utils/StringUtils";
 import configurationService from "./ConfigurationService";
-import { S_IFREG } from "constants";
+import { GET_EACH_WORD_REGEX } from "../Models/Constants";
 
 export class VariableFormatter {
   escapeStringValue() {
@@ -29,38 +29,62 @@ export class VariableFormatter {
     vsCodeService.replaceSelectedText(output);
   }
 
-  toUnderscoreVariable() {
+  toSnakeCase() {
     const selectedText = vsCodeService.getSelectedText();
 
-    let output = selectedText.match(/[a-zA-Z0-9]+/g);
-    if (!output) {
+    let array = selectedText.match(GET_EACH_WORD_REGEX);
+    if (!array) {
       throw new InformationMessage("Could not format string.");
     }
 
-    vsCodeService.replaceSelectedText(output.join("_"));
+    array = array.map((x) => x.toLowerCase());
+
+    vsCodeService.replaceSelectedText(array.join("_"));
+  }
+
+  toConstantCase() {
+    const selectedText = vsCodeService.getSelectedText();
+
+    let array = selectedText.match(GET_EACH_WORD_REGEX);
+    if (!array) {
+      throw new InformationMessage("Could not format string.");
+    }
+
+    array = array.map((x) => x.toUpperCase());
+
+    vsCodeService.replaceSelectedText(array.join("_"));
   }
 
   toPascalCase() {
     let selectedText = vsCodeService.getSelectedText();
     selectedText = stringUtils.toTitleCase(selectedText);
 
-    let output = selectedText.match(/[a-zA-Z0-9]+/g);
-    if (!output) {
+    let array = selectedText.match(GET_EACH_WORD_REGEX);
+    if (!array) {
       throw new InformationMessage("Could not format string.");
     }
 
-    vsCodeService.replaceSelectedText(output.join(""));
+    array = array.map(
+      (x) => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
+    );
+
+    vsCodeService.replaceSelectedText(array.join(""));
   }
 
   toCamelCase() {
     let selectedText = vsCodeService.getSelectedText();
     selectedText = stringUtils.toTitleCase(selectedText);
 
-    let output = selectedText.match(/[a-zA-Z0-9]+/g);
-    if (!output) {
+    let array = selectedText.match(GET_EACH_WORD_REGEX);
+    if (!array) {
       throw new InformationMessage("Could not format string.");
     }
-    let finalString = output.join("");
+
+    array = array.map(
+      (x) => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
+    );
+
+    let finalString = array.join("");
     finalString = finalString.charAt(0).toLowerCase() + finalString.slice(1);
 
     vsCodeService.replaceSelectedText(finalString);
@@ -70,27 +94,27 @@ export class VariableFormatter {
     let selectedText = vsCodeService.getSelectedText();
 
     const capitalize = configurationService.get().variableFormatter
-      .toVariableCustom.capitalizeWords;
+      .toCustomVariable.isFirstCharUpper;
     if (capitalize) {
       selectedText = stringUtils.toTitleCase(selectedText);
     }
 
-    let output = selectedText.match(/[a-zA-Z0-9]+/g);
-    if (!output) {
+    let array = selectedText.match(GET_EACH_WORD_REGEX);
+    if (!array) {
       throw new InformationMessage("Could not format string.");
     }
 
     const config = configurationService.get();
-    let joinString = config.variableFormatter.toVariableCustom.joinString;
+    let joinString = config.variableFormatter.toCustomVariable.joinString;
     if (!joinString) {
       vsCodeService
         .showInputBox("String added in between words in the variable")
         .then((value) => {
-          if (value === undefined || output === null) {
+          if (value === undefined || array === null) {
             return;
           }
 
-          vsCodeService.replaceSelectedText(output.join(value));
+          vsCodeService.replaceSelectedText(array.join(value));
         });
     }
   }

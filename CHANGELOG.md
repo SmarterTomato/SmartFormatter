@@ -1,6 +1,18 @@
 # Change Log
 
-## 1.0.0 - 2020-06-23
+## v1.1.0 - 2020-07-01
+
+### New
+
+- To "CONSTANT_CASE"
+- Format variable now detect word that connects to each other. Like `SmartFormatter` will break into Smart and Formatter
+
+### Update
+
+- Rename `To "Underscore_Variable"` to `To "snake_case"`
+- Rename `To Single Line` to `Merge Lines`
+
+## v1.0.0 - 2020-06-23
 
 Initial release of SmartFormatter
 
@@ -27,5 +39,3 @@ Initial release of SmartFormatter
 - Unescape with current document language
 - Escape with selected document language
 - Unescape with selected document language
-
-[1.0.0]: https://github.com/SmarterTomato/SmartFormatter/blob/v1.0.0/CHANGELOG.md

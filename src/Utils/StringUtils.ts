@@ -1,4 +1,4 @@
-import { TLSSocket } from "tls";
+import { GET_EACH_CONNECTED_STRING_REGEX } from "../Models/Constants";
 
 export class StringUtils {
   toSentenceCase(str: string): string {
@@ -12,7 +12,7 @@ export class StringUtils {
   }
 
   toTitleCase(str: string): string {
-    return str.replace(/[a-zA-Z0-9]+/g, function (txt) {
+    return str.replace(GET_EACH_CONNECTED_STRING_REGEX, function (txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1);
     });
   }
