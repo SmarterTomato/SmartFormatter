@@ -90,11 +90,24 @@ export class VariableFormatter {
     vsCodeService.replaceSelectedText(finalString);
   }
 
+  toSentence() {
+    let selectedText = vsCodeService.getSelectedText();
+
+    let array = selectedText.match(GET_EACH_WORD_REGEX);
+    if (!array) {
+      throw new InformationMessage("Could not format string.");
+    }
+
+    array = array.map((x) => x.toLowerCase());
+
+    vsCodeService.replaceSelectedText(array.join(" "));
+  }
+
   toCustomVariable() {
     let selectedText = vsCodeService.getSelectedText();
 
     const capitalize = configurationService.get().variableFormatter
-      .toCustomVariable.isFirstCharUpper;
+      .toCustomVariable.upperFirst;
     if (capitalize) {
       selectedText = stringUtils.toTitleCase(selectedText);
     }

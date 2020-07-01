@@ -23,13 +23,6 @@ export class StringFormatter {
     vsCodeService.replaceSelectedText(output);
   }
 
-  toSentenceCase() {
-    const selectedText = vsCodeService.getSelectedText();
-
-    let output = stringUtils.toSentenceCase(selectedText);
-    vsCodeService.replaceSelectedText(output);
-  }
-
   toTitleCase() {
     const selectedText = vsCodeService.getSelectedText();
 

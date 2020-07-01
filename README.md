@@ -8,6 +8,7 @@ Search: `SmartFormatter`
 ## What's new
 
 - To "CONSTANT_CASE"
+- To sentence
 
 ## Features
 
@@ -16,7 +17,7 @@ Format string by select the string (without quote) and calling commands in `Smar
 Most used feature includes:
 
 - Format simple text: `lower case`, `UPPER CASE`, `Title Case` and merge line
-- Format programming variables: To `PascalCase`, `snake_case`, `camelCase`, `CONSTANT_CASE` and `Custom variable` (define your rule)
+- Format programming variables: To `PascalCase`, `snake_case`, `camelCase`, `CONSTANT_CASE`, `Custom variable` (define your rule) and `to sentence`
 - Escape string: auto detect current document type or format to a specific language
 
 ### To UPPER CASE
@@ -30,12 +31,6 @@ Most used feature includes:
 **From**: "This is an example of String"
 
 **To**: "this is an example of string"
-
-### To Sentence case
-
-**From**: "this is an example of String. you can format string by calling command"
-
-**To**: "This is an example of String. You can format string by calling command"
 
 ### Merge lines
 
@@ -71,6 +66,12 @@ you can format string by calling command"
 
 **To**: "smartFormatter"
 
+### To sentence
+
+**From**: "SMART_FORMATTER"
+
+**To**: "smart formatter"
+
 ### To Custom Variable
 
 **To** custom variable format the string into variable with the characters you specified.
@@ -81,7 +82,7 @@ you can format string by calling command"
 
 **To**: "Smart-Formatter"
 
-You can capitalize each words by setting the configuration `smartFormatter.variableFormatter.toVariableCustom.isFirstCharUpper` to true
+You can capitalize each words by setting the configuration `smartFormatter.variableFormatter.toVariableCustom.upperFirst` to true
 
 **From**: "smart_formatter"
 
@@ -162,12 +163,14 @@ GitHub: [SmartFormatter GitHub](https://github.com/SmarterTomato/SmartFormatter/
 #### New
 
 - To "CONSTANT_CASE"
+- To sentence
 - Format variable now detect word that connects to each other. Like `SmartFormatter` will break into Smart and Formatter
 
 #### Update
 
 - Rename `To "Underscore_Variable"` to `To "snake_case"`
 - Rename `To Single Line` to `Merge Lines`
+- Remove `To Sentence case`
 
 ### For more information
 
