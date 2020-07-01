@@ -1,10 +1,5 @@
 import vsCodeService from "./VSCodeService";
-import InformationMessage from "../Models/InformationMessage";
-import {
-  languageEscapeRules,
-  languageUnescapeRules,
-  LanguageEscapeRule,
-} from "../Models/EscapeRules";
+import { languageEscapeRules, LanguageEscapeRule } from "../Models/EscapeRules";
 import LanguageId from "../Models/LanguageId";
 
 export class EscapeFormatter {

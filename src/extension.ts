@@ -84,38 +84,53 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(toTitleCaseDisposable);
 
   // * Format string into single line
-  const toSingleLineDisposable = vscode.commands.registerCommand(
-    "stringFormatter.toSingleLine",
+  const mergeLinesLineDisposable = vscode.commands.registerCommand(
+    "stringFormatter.mergeLines",
     () => {
-      console.log(`String formatter: To single line started`);
+      console.log(`String formatter: Merge lines started`);
 
       try {
-        stringFormatter.toSingleLine();
+        stringFormatter.mergeLines();
       } catch (catchable) {
         processCatchable(catchable);
       }
     }
   );
-  context.subscriptions.push(toSingleLineDisposable);
+  context.subscriptions.push(mergeLinesLineDisposable);
 
   // #endregion
 
   // #region Variable formatter
 
   // * Format string to variable, connect word with underscore
-  const toUnderscoreVariable = vscode.commands.registerCommand(
-    "variableFormatter.toUnderscoreVariable",
+  const toSnakeCaseDisposable = vscode.commands.registerCommand(
+    "variableFormatter.toSnakeCase",
     () => {
-      console.log(`Variable formatter: To underscore variable started`);
+      console.log(`Variable formatter: To snake case started`);
 
       try {
-        variableFormatter.toUnderscoreVariable();
+        variableFormatter.toSnakeCase();
       } catch (catchable) {
         processCatchable(catchable);
       }
     }
   );
-  context.subscriptions.push(toUnderscoreVariable);
+
+  context.subscriptions.push(toSnakeCaseDisposable);
+  // * Format string to variable, connect word with underscore
+  const toConstantCaseDisposable = vscode.commands.registerCommand(
+    "variableFormatter.toConstantCase",
+    () => {
+      console.log(`Variable formatter: To constant case started`);
+
+      try {
+        variableFormatter.toConstantCase();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(toConstantCaseDisposable);
 
   // * Format string to variable, capitalize each word
   const toPascalCaseDisposable = vscode.commands.registerCommand(

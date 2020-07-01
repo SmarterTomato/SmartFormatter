@@ -3,3 +3,4 @@ node_modules
 .vscode-test/
 *.vsix
 .vscode/smartopen.json
+npm-debug.log

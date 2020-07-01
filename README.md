@@ -1,9 +1,13 @@
 # SmartFormatter README
 
-SmartFormatter is all you need text formatter for VSCode. Similar functions to FreeFormatter.com
+SmartFormatter is all you need text formatter for VSCode.
 
 Use shortcut to bring up command palette: `Ctrl + Shift + P`
 Search: `SmartFormatter`
+
+## What's new
+
+- To "CONSTANT_CASE"
 
 ## Features
 
@@ -11,8 +15,8 @@ Format string by select the string (without quote) and calling commands in `Smar
 
 Most used feature includes:
 
-- Format simple text: To `lower case`, to `UPPER CASE`, to `Title Case` and to single line
-- Format programming variables: To `PascalCase`, to `camelCase` and to `Custom variable` (define your rule)
+- Format simple text: `lower case`, `UPPER CASE`, `Title Case` and merge line
+- Format programming variables: To `PascalCase`, `snake_case`, `camelCase`, `CONSTANT_CASE` and `Custom variable` (define your rule)
 - Escape string: auto detect current document type or format to a specific language
 
 ### To UPPER CASE
@@ -33,9 +37,9 @@ Most used feature includes:
 
 **To**: "This is an example of String. You can format string by calling command"
 
-### To Single Line
+### Merge lines
 
-**To** single line connects multiple line text into a single line string. The `smartFormatter.stringFormatter.toSingleLine.joinString` can be configured in the settings. Default is " "
+Merge multiple line text into a single line string. The `smartFormatter.stringFormatter.mergeLines.joinString` can be configured in the settings. Default is " "
 
 **From**: "this is an example of String.
 
@@ -43,43 +47,49 @@ you can format string by calling command"
 
 **To**: "this is an example of String. you can format string by calling command"
 
-### To Underscore_Variable
+### To snake_case
 
-**From**: "This is an example of String"
+**From**: "SmartFormatter"
 
-**To**: "This_is_an_example_of_String"
+**To**: "smart_formatter"
+
+### To CONSTANT_CASE
+
+**From**: "SmartFormatter"
+
+**To**: "SMART_FORMATTER"
 
 ### To PascalCase
 
-**From**: "This is an example of String"
+**From**: "smart_formatter"
 
-**To**: ThisIsAnExampleOfString
+**To**: "SmartFormatter"
 
 ### To camelCase
 
-**From**: "This is an example of String"
+**From**: "smart_formatter"
 
-**To**: "thisIsAnExampleOfString"
+**To**: "smartFormatter"
 
 ### To Custom Variable
 
 **To** custom variable format the string into variable with the characters you specified.
 
-**From**: "This is an example of String"
+**From**: "SmartFormatter"
 
 **Enter**: "-"
 
-**To**: "This-is-an-example-of-String"
+**To**: "Smart-Formatter"
 
-You can capitalize each words by setting the configuration `smartFormatter.variableFormatter.toVariableCustom.capitalizeWords` to true
+You can capitalize each words by setting the configuration `smartFormatter.variableFormatter.toVariableCustom.isFirstCharUpper` to true
 
-**From**: "This is an example of String"
+**From**: "smart_formatter"
 
 **Enter**: "-"
 
-**To**: "This-Is-An-Example-Of-String"
+**To**: "Smart-Formatter"
 
-Also, you can set `smartFormatter.variableFormatter.toVariableCustom.joinString` so the variable will use that character instead of asking you every time.
+Also, you can set `smartFormatter.variableFormatter.toCustomVariable.joinString` so the variable will use that character instead of asking you every time.
 
 ### Escape
 
@@ -124,9 +134,9 @@ Only escapes the quote (") and backslash (\). Common use case is the file path i
 - `smartFormatter.stringFormatter.enable`: Enable/disable string formatter commands
 - `smartFormatter.variableFormatter.enable`: Enable/disable variable formatter commands
 - `smartFormatter.escapeFormatter.enable`: Enable/disable escape formatter commands
-- `smartFormatter.stringFormatter.toSingleLine.joinString`: The string to replace each line break. Default: " "
-- `smartFormatter.variableFormatter.toVariableCustom.capitalizeWords`: If formatted variable should be capitalized in custom mode
-- `smartFormatter.variableFormatter.toVariableCustom.joinString`: String added in between words in the variable. \nIf this is not set, will have a popup window ask for it
+- `smartFormatter.stringFormatter.mergeLines.joinString`: The string to replace each line break. Default: " "
+- `smartFormatter.variableFormatter.toCustomVariable.capitalizeWords`: If formatted variable should be capitalized in custom mode
+- `smartFormatter.variableFormatter.toCustomVariable.joinString`: String added in between words in the variable. \nIf this is not set, will have a popup window ask for it
 
 ## Known Issues
 
@@ -147,33 +157,17 @@ GitHub: [SmartFormatter GitHub](https://github.com/SmarterTomato/SmartFormatter/
 
 ## Release Notes
 
-### 1.0.0
-
-Initial release of SmartFormatter
+### v1.1.0 - 2020-07-01
 
 #### New
 
-##### String formatter
+- To "CONSTANT_CASE"
+- Format variable now detect word that connects to each other. Like `SmartFormatter` will break into Smart and Formatter
 
-- To upper case
-- To lower case
-- To sentence case
-- To title case
-- To single line
+#### Update
 
-##### Variable formatter
-
-- To underscore variable
-- To pascal case
-- To camel case
-- To custom variable
-
-##### Escape formatter
-
-- Escape with current document language
-- Unescape with current document language
-- Escape with selected document language
-- Unescape with selected document language
+- Rename `To "Underscore_Variable"` to `To "snake_case"`
+- Rename `To Single Line` to `Merge Lines`
 
 ### For more information
 
