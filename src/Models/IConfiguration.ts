@@ -6,7 +6,7 @@ export default interface IConfiguration {
   };
   variableFormatter: {
     enable: boolean;
-    toCustomVariable: { isFirstCharUpper: boolean; joinString: string | null };
+    toCustomVariable: { upperFirst: boolean; joinString: string | null };
   };
   escapeFormatter: {
     enable: boolean;

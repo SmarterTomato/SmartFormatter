@@ -6,11 +6,13 @@
 
 - To "CONSTANT_CASE"
 - Format variable now detect word that connects to each other. Like `SmartFormatter` will break into Smart and Formatter
+- To sentence
 
 ### Update
 
 - Rename `To "Underscore_Variable"` to `To "snake_case"`
 - Rename `To Single Line` to `Merge Lines`
+- Remove `To Sentence case`
 
 ## v1.0.0 - 2020-06-23
 

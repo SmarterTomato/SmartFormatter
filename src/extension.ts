@@ -53,21 +53,6 @@ export function activate(context: vscode.ExtensionContext) {
   );
   context.subscriptions.push(toLowerCaseDisposable);
 
-  // * Capitalize first character of each sentence
-  const toSentenceCaseDisposable = vscode.commands.registerCommand(
-    "stringFormatter.toSentenceCase",
-    () => {
-      console.log(`String formatter: To Sentence Case started`);
-
-      try {
-        stringFormatter.toSentenceCase();
-      } catch (catchable) {
-        processCatchable(catchable);
-      }
-    }
-  );
-  context.subscriptions.push(toSentenceCaseDisposable);
-
   // * Capitalize all first character for each word
   const toTitleCaseDisposable = vscode.commands.registerCommand(
     "stringFormatter.toTitleCase",
@@ -117,7 +102,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(toSnakeCaseDisposable);
-  // * Format string to variable, connect word with underscore
+  // * Format string to variable, capitalize each character and put underscore between them
   const toConstantCaseDisposable = vscode.commands.registerCommand(
     "variableFormatter.toConstantCase",
     () => {
@@ -161,6 +146,21 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
   context.subscriptions.push(toCamelCaseDisposable);
+
+  // * Return variable to sentence
+  const toSentenceDisposable = vscode.commands.registerCommand(
+    "variableFormatter.toSentence",
+    () => {
+      console.log(`Variable formatter: To Sentence started`);
+
+      try {
+        variableFormatter.toSentence();
+      } catch (catchable) {
+        processCatchable(catchable);
+      }
+    }
+  );
+  context.subscriptions.push(toSentenceDisposable);
 
   // * Format string to custom variable, get settings from configuration
   const toCustomVariableDisposable = vscode.commands.registerCommand(
