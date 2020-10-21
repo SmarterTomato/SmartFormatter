@@ -2,7 +2,7 @@
 	"name": "smart-formatter",
 	"displayName": "Smart Formatter",
 	"description": "A VS Code extension formats string in anyway you like. Similar functions to FreeFormatter.com",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
