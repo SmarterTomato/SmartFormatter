@@ -2,7 +2,7 @@
 	"name": "smart-formatter",
 	"displayName": "Smart Formatter",
 	"description": "A VS Code extension formats string in anyway you like. Similar functions to FreeFormatter.com",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
@@ -49,97 +49,97 @@
 				"command": "stringFormatter.toUpperCase",
 				"title": "To \"UPPER CASE\"",
 				"category": "SmartFormatter.StringFormatter",
-				"enablement": "config.stringFormatter.enable"
+				"enablement": "config.smartFormatter.stringFormatter.enable"
 			},
 			{
 				"command": "stringFormatter.toLowerCase",
 				"title": "To \"lower case\"",
 				"category": "SmartFormatter.StringFormatter",
-				"enablement": "config.stringFormatter.enable"
+				"enablement": "config.smartFormatter.stringFormatter.enable"
 			},
 			{
 				"command": "stringFormatter.toTitleCase",
 				"title": "To \"Title Case\"",
 				"category": "SmartFormatter.StringFormatter",
-				"enablement": "config.stringFormatter.enable"
+				"enablement": "config.smartFormatter.stringFormatter.enable"
 			},
 			{
 				"command": "stringFormatter.mergeLines",
 				"title": "Merge Lines",
 				"category": "SmartFormatter.StringFormatter",
-				"enablement": "config.stringFormatter.enable"
+				"enablement": "config.smartFormatter.stringFormatter.enable"
 			},
 			{
 				"command": "variableFormatter.toSnakeCase",
 				"title": "To \"snake_case\"",
 				"category": "SmartFormatter.VariableFormatter",
-				"enablement": "config.variableFormatter.enable"
+				"enablement": "config.smartFormatter.variableFormatter.enable"
 			},
 			{
 				"command": "variableFormatter.toConstantCase",
 				"title": "To \"CONSTANT_CASE\"",
 				"category": "SmartFormatter.VariableFormatter",
-				"enablement": "config.variableFormatter.enable"
+				"enablement": "config.smartFormatter.variableFormatter.enable"
 			},
 			{
 				"command": "variableFormatter.toPascalCase",
 				"title": "To \"PascalCase\"",
 				"category": "SmartFormatter.VariableFormatter",
-				"enablement": "config.variableFormatter.enable"
+				"enablement": "config.smartFormatter.variableFormatter.enable"
 			},
 			{
 				"command": "variableFormatter.toCamelCase",
 				"title": "To \"camelCase\"",
 				"category": "SmartFormatter.VariableFormatter",
-				"enablement": "config.variableFormatter.enable"
+				"enablement": "config.smartFormatter.variableFormatter.enable"
 			},
 			{
 				"command": "variableFormatter.toSentence",
 				"title": "To sentence",
 				"category": "SmartFormatter.variableFormatter",
-				"enablement": "config.variableFormatter.enable"
+				"enablement": "config.smartFormatter.variableFormatter.enable"
 			},
 			{
 				"command": "variableFormatter.toCustomVariable",
 				"title": "To Custom Variable",
 				"category": "SmartFormatter.VariableFormatter",
-				"enablement": "config.variableFormatter.enable"
+				"enablement": "config.smartFormatter.variableFormatter.enable"
 			},
 			{
 				"command": "escapeFormatter.escape",
 				"title": "Escape",
 				"category": "SmartFormatter.EscapeFormatter",
-				"enablement": "config.escapeFormatter.enable"
+				"enablement": "config.smartFormatter.escapeFormatter.enable"
 			},
 			{
 				"command": "escapeFormatter.unescape",
 				"title": "Unescape",
 				"category": "SmartFormatter.EscapeFormatter",
-				"enablement": "config.escapeFormatter.enable"
+				"enablement": "config.smartFormatter.escapeFormatter.enable"
 			},
 			{
 				"command": "escapeFormatter.escapeWithLanguage",
 				"title": "Escape With Language",
 				"category": "SmartFormatter.EscapeFormatter",
-				"enablement": "config.escapeFormatter.enable"
+				"enablement": "config.smartFormatter.escapeFormatter.enable"
 			},
 			{
 				"command": "escapeFormatter.unescapeWithLanguage",
 				"title": "Unescape With Language",
 				"category": "SmartFormatter.EscapeFormatter",
-				"enablement": "config.escapeFormatter.enable"
+				"enablement": "config.smartFormatter.escapeFormatter.enable"
 			},
 			{
 				"command": "escapeFormatter.escapeStringValue",
 				"title": "Escape string to value (Escape \"Quote\" and \"Backslash\")",
 				"category": "SmartFormatter.EscapeFormatter",
-				"enablement": "config.escapeFormatter.enable"
+				"enablement": "config.smartFormatter.escapeFormatter.enable"
 			},
 			{
 				"command": "escapeFormatter.unescapeStringValue",
 				"title": "Unescape string from value (Unescape \"Quote\" and \"Backslash\")",
 				"category": "SmartFormatter.EscapeFormatter",
-				"enablement": "config.escapeFormatter.enable"
+				"enablement": "config.smartFormatter.escapeFormatter.enable"
 			}
 		],
 		"configuration": [{
